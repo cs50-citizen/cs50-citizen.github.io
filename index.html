@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jack Deng | Full-Stack & AI Software Engineer</title>
+  <meta name="description" content="Portfolio of Jack Deng - Full-Stack Software Engineer with 2 years ByteDance experience & UQ Master's degree. Specializing in AI Agents, RAG, High-Concurrency Microservices, and Modern Web Applications.">
+  <meta name="keywords" content="Jack Deng, Software Engineer, ByteDance, AI Engineer, Full-Stack, React, Next.js, Python, FastAPI, Brisbane, Australia">
+  <meta name="author" content="Jack Deng">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jack Deng | Full-Stack & AI Software Engineer">
+  <meta property="og:description" content="Ex-ByteDance Full-Stack Engineer & UQ CS Master. Building Scalable Microservices, Modern Web Apps, and State-of-the-Art AI Agents.">
+  <meta property="og:url" content="https://github.com/cs50-citizen">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Apple System Fonts & Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', '"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"SF Mono"', '"JetBrains Mono"', 'Menlo', 'monospace'],
+          },
+          colors: {
+            apple: {
+              bg: '#000000',
+              surface: '#161617',
+              surfaceHover: '#1d1d1f',
+              border: '#424245',
+              subtleBorder: 'rgba(255, 255, 255, 0.08)',
+              text: '#f5f5f7',
+              muted: '#86868b',
+              blue: '#2997ff',
+              blueHover: '#0071e3',
+              pill: '#0071e3',
+              pillHover: '#0077ed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Scrollbar - Sleek Apple Style */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d2f;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #424245;
+    }
+
+    /* Apple Glass Surface */
+    .apple-glass {
+      background: rgba(22, 22, 23, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Apple Titanium / Silver Gradient Text */
+    .text-apple-gradient {
+      background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Apple Blue Gradient Text */
+    .text-blue-gradient {
+      background: linear-gradient(135deg, #2997ff 0%, #90b8f8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Soft Glow */
+    .apple-glow {
+      box-shadow: 0 0 50px -10px rgba(41, 151, 255, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-[#000000] text-[#f5f5f7] antialiased selection:bg-[#2997ff] selection:text-white">
+
+  <!-- Apple Global Navigation Bar -->
+  <nav class="sticky top-0 z-50 w-full bg-[rgba(0,0,0,0.8)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-12 flex items-center justify-between text-xs font-normal">
+      <!-- Logo / Monogram -->
+      <a href="#hero" class="flex items-center gap-2 group text-[#f5f5f7] hover:opacity-80 transition-opacity">
+        <span class="font-mono font-bold tracking-tight text-sm">&lt;JD/&gt;</span>
+        <span class="font-semibold tracking-tight text-[13px] hidden sm:inline">Jack Deng</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7 text-[#f5f5f7]/80">
+        <a href="#overview" class="hover:text-[#f5f5f7] transition-colors" data-i18n="nav.overview">Overview</a>
+        <a href="#experience" class="hover:text-[#f5f5f7] transition-colors" data-i18n="nav.experience">Experience</a>
+        <a href="#projects" class="hover:text-[#f5f5f7] transition-colors" data-i18n="nav.projects">Projects</a>
+        <a href="#specs" class="hover:text-[#f5f5f7] transition-colors" data-i18n="nav.specs">Tech Specs</a>
+        <a href="#contact" class="hover:text-[#f5f5f7] transition-colors" data-i18n="nav.contact">Contact</a>
+      </div>
+
+      <!-- Action Pill Buttons (Language + Resume) -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-2.5 py-1 rounded-full bg-[#1d1d1f] hover:bg-[#2d2d2f] text-[11px] font-medium text-[#f5f5f7] transition-all border border-[rgba(255,255,255,0.1)] flex items-center gap-1.5" title="Switch Language">
+          <i data-lucide="globe" class="w-3 h-3 text-[#2997ff]"></i>
+          <span id="lang-label">中文</span>
+        </button>
+
+        <!-- Download CV Apple Blue Pill -->
+        <a href="Jack_Deng_Resume.pdf" target="_blank" download="Jack_Deng_Resume.pdf" class="px-3.5 py-1 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-[12px] font-normal transition-all shadow-sm flex items-center gap-1">
+          <span data-i18n="nav.resume">Resume</span>
+          <i data-lucide="arrow-down" class="w-3 h-3"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-[#86868b] hover:text-[#f5f5f7]">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#000000]/95 border-b border-[rgba(255,255,255,0.08)] px-6 py-4 space-y-3 text-sm">
+      <a href="#overview" onclick="toggleMobileMenu()" class="block text-[#86868b] hover:text-[#f5f5f7]" data-i18n="nav.overview">Overview</a>
+      <a href="#experience" onclick="toggleMobileMenu()" class="block text-[#86868b] hover:text-[#f5f5f7]" data-i18n="nav.experience">Experience</a>
+      <a href="#projects" onclick="toggleMobileMenu()" class="block text-[#86868b] hover:text-[#f5f5f7]" data-i18n="nav.projects">Projects</a>
+      <a href="#specs" onclick="toggleMobileMenu()" class="block text-[#86868b] hover:text-[#f5f5f7]" data-i18n="nav.specs">Tech Specs</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-[#86868b] hover:text-[#f5f5f7]" data-i18n="nav.contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#1d1d1f] text-[#f5f5f7] border border-[rgba(255,255,255,0.15)] shadow-2xl backdrop-blur-xl text-xs font-medium">
+    <i data-lucide="check" class="w-4 h-4 text-[#2997ff]"></i>
+    <span id="toast-text">Copied to clipboard</span>
+  </div>
+
+  <!-- HERO SECTION: Apple Keynote Style -->
+  <header id="hero" class="relative pt-20 pb-24 md:pt-32 md:pb-36 overflow-hidden">
+    <!-- Atmospheric Apple Glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2997ff]/10 via-[#6366f1]/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8">
+      
+      <!-- Eyebrow Pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161617] border border-[rgba(255,255,255,0.1)] text-xs text-[#86868b]">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span data-i18n="hero.status">Temporary Graduate Visa (Subclass 485) · Full Work Rights</span>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="space-y-3">
+        <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-tight text-white leading-[1.05]">
+          <span class="block text-apple-gradient">Jack Deng.</span>
+          <span id="hero-zh-name" class="hidden text-3xl sm:text-5xl font-normal text-[#86868b] mt-2" data-i18n="hero.zhName"></span>
+        </h1>
+        <p class="text-xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-[#86868b] max-w-3xl mx-auto leading-tight" data-i18n="hero.tagline">
+          Engineered for scale. Driven by intelligence.
+        </p>
+      </div>
+
+      <!-- Hero Subhead Paragraph -->
+      <p class="text-base sm:text-lg text-[#86868b] max-w-2xl mx-auto leading-relaxed" data-i18n="hero.summary">
+        2 years of large-scale engineering experience at <strong class="text-[#f5f5f7] font-semibold">ByteDance</strong> (supporting 100M+ DAU) paired with a Master of Computer Science from <strong class="text-[#f5f5f7] font-semibold">The University of Queensland</strong>. Architecting distributed microservices, ultra-fast web apps, and enterprise AI & RAG systems.
+      </p>
+
+      <!-- Apple CTAs: Blue Pill + Frosted Outline -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="Jack_Deng_Resume.pdf" target="_blank" download="Jack_Deng_Resume.pdf" class="px-6 py-2.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm font-normal tracking-tight transition-all shadow-md flex items-center gap-2">
+          <span data-i18n="hero.cta.resume">Download CV (PDF)</span>
+          <i data-lucide="download" class="w-4 h-4"></i>
+        </a>
+        <button onclick="copyEmail()" class="px-6 py-2.5 rounded-full bg-[#161617] hover:bg-[#1d1d1f] text-[#2997ff] hover:text-[#52aaff] border border-[rgba(255,255,255,0.12)] text-sm font-normal tracking-tight transition-all flex items-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span data-i18n="hero.cta.copyEmail">Copy Email</span>
+        </button>
+        <a href="#projects" class="text-[#2997ff] hover:underline text-sm font-normal inline-flex items-center gap-1 group py-2.5 px-3">
+          <span data-i18n="hero.cta.projects">Explore Projects</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- Apple Keynote Portrait Showcase Card -->
+      <div class="pt-8 max-w-xl mx-auto">
+        <div class="apple-glass rounded-[32px] p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 text-left border border-[rgba(255,255,255,0.1)] shadow-2xl">
+          <!-- Portrait Avatar -->
+          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden flex-shrink-0 border border-[rgba(255,255,255,0.15)] shadow-lg bg-[#161617]">
+            <img src="avatar.jpg" alt="Jack Deng" class="w-full h-full object-cover object-top">
+          </div>
+          <!-- Executive Info -->
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#2997ff]">
+              <span>Full-Stack & AI Systems</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white tracking-tight" data-i18n="card.name">Jack Deng</h3>
+            <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="card.details">
+              Ex-ByteDance Software Engineer · UQ Master of Computer Science · Based in Brisbane (Open to Relocate)
+            </p>
+            <div class="pt-2 flex items-center gap-4 text-xs text-[#86868b]">
+              <a href="https://github.com/cs50-citizen" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i> cs50-citizen
+              </a>
+              <span>·</span>
+              <a href="https://www.linkedin.com/in/yuhang-deng-cs/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+                <i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#2997ff]"></i> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- APPLE KEYNOTE METRICS SECTION -->
+  <section id="overview" class="py-16 border-y border-[rgba(255,255,255,0.08)] bg-[#0a0a0b]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-6xl font-bold tracking-tight text-white font-sans">100M<span class="text-[#2997ff]">+</span></div>
+          <p class="text-xs sm:text-sm text-[#86868b] font-medium" data-i18n="metric.dau">Daily Active Users Scaled</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-6xl font-bold tracking-tight text-white font-sans">99.99<span class="text-emerald-400">%</span></div>
+          <p class="text-xs sm:text-sm text-[#86868b] font-medium" data-i18n="metric.sla">Production Uptime SLA</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-6xl font-bold tracking-tight text-white font-sans">-45<span class="text-indigo-400">%</span></div>
+          <p class="text-xs sm:text-sm text-[#86868b] font-medium" data-i18n="metric.perf">API Latency Optimization</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-6xl font-bold tracking-tight text-white font-sans">0<span class="text-[#2997ff]">%</span></div>
+          <p class="text-xs sm:text-sm text-[#86868b] font-medium" data-i18n="metric.ai">AI Constraint Violation Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BENTO HIGHLIGHTS: Apple Pro Architecture -->
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <h2 class="text-xs font-semibold tracking-widest text-[#2997ff] uppercase" data-i18n="bento.eyebrow">Highlights</h2>
+        <h3 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n="bento.title">
+          Built for high stakes.
+        </h3>
+        <p class="text-base text-[#86868b]" data-i18n="bento.desc">
+          From planet-scale microservices at ByteDance to deterministic multi-agent architectures.
+        </p>
+      </div>
+
+      <!-- Bento Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Large Card 1: ByteDance Engineering -->
+        <div class="md:col-span-8 apple-glass rounded-[28px] p-8 sm:p-10 flex flex-col justify-between space-y-6 relative overflow-hidden group">
+          <div class="space-y-3 relative z-10">
+            <span class="text-xs font-mono font-medium text-[#2997ff] uppercase" data-i18n="bento.c1.tag">Engineering Core · Beijing</span>
+            <h4 class="text-2xl sm:text-3xl font-semibold text-white tracking-tight" data-i18n="bento.c1.title">
+              ByteDance: Planetary Scale High Concurrency
+            </h4>
+            <p class="text-sm text-[#86868b] leading-relaxed max-w-xl" data-i18n="bento.c1.desc">
+              Engineered backend microservices and data pipelines in Go, Node.js, and Python. Rebuilt user platform with React/Next.js SSR reducing load times by 38%, and eliminated slow database queries via multi-tier Redis caching.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 relative z-10">
+            <span class="px-3 py-1 rounded-full bg-[#1d1d1f] text-xs text-[#f5f5f7] border border-[rgba(255,255,255,0.06)] font-mono">100M+ DAU</span>
+            <span class="px-3 py-1 rounded-full bg-[#1d1d1f] text-xs text-[#f5f5f7] border border-[rgba(255,255,255,0.06)] font-mono">AWS & K8s</span>
+            <span class="px-3 py-1 rounded-full bg-[#1d1d1f] text-xs text-[#f5f5f7] border border-[rgba(255,255,255,0.06)] font-mono">PostgreSQL / Redis</span>
+            <span class="px-3 py-1 rounded-full bg-[#1d1d1f] text-xs text-[#f5f5f7] border border-[rgba(255,255,255,0.06)] font-mono">85%+ Test Coverage</span>
+          </div>
+
+          <!-- Subtle Background Accent -->
+          <div class="absolute -right-16 -bottom-16 w-72 h-72 bg-[#2997ff]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#2997ff]/10 transition-colors"></div>
+        </div>
+
+        <!-- Card 2: Academic Excellence (UQ) -->
+        <div class="md:col-span-4 apple-glass rounded-[28px] p-8 flex flex-col justify-between space-y-6 group">
+          <div class="space-y-3">
+            <span class="text-xs font-mono font-medium text-indigo-400 uppercase" data-i18n="bento.c2.tag">Academic · Brisbane</span>
+            <h4 class="text-xl font-semibold text-white tracking-tight" data-i18n="bento.c2.title">
+              The University of Queensland
+            </h4>
+            <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="bento.c2.desc">
+              Master of Computer Science (Management). Academic GPA 5.5 / 7.0. Advanced Cloud Computing, Distributed Databases, and Machine Learning Systems.
+            </p>
+          </div>
+
+          <div class="space-y-1 border-t border-[rgba(255,255,255,0.08)] pt-4 text-xs text-[#86868b]">
+            <div class="flex justify-between">
+              <span>Degree</span>
+              <span class="text-white font-medium">Master of CS</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Standing</span>
+              <span class="text-white font-medium">GPA 5.5 / 7.0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Enterprise AI & RAG -->
+        <div class="md:col-span-6 apple-glass rounded-[28px] p-8 space-y-4">
+          <span class="text-xs font-mono font-medium text-emerald-400 uppercase" data-i18n="bento.c3.tag">AI Innovation</span>
+          <h4 class="text-xl font-semibold text-white tracking-tight" data-i18n="bento.c3.title">
+            Enterprise RAG & Hybrid Retrieval
+          </h4>
+          <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="bento.c3.desc">
+            End-to-end knowledge pipelines combining vector indexing (pgvector, ChromaDB), sub-second semantic retrieval, and real-time WebSocket/SSE token streaming.
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">FastAPI</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">pgvector</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">LangChain</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Constraint-Aware Agent Systems -->
+        <div class="md:col-span-6 apple-glass rounded-[28px] p-8 space-y-4">
+          <span class="text-xs font-mono font-medium text-purple-400 uppercase" data-i18n="bento.c4.tag">Deterministic AI</span>
+          <h4 class="text-xl font-semibold text-white tracking-tight" data-i18n="bento.c4.title">
+            LangGraph & Multi-Agent Planning
+          </h4>
+          <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="bento.c4.desc">
+            Decoupled complex multi-variable constraints into directed acyclic state graphs, paired with Z3 branch-and-bound pruning to achieve 0% mathematical violations.
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">LangGraph</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">Z3 Solver</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] text-[#86868b] font-mono">OR-Tools</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="py-24 border-t border-[rgba(255,255,255,0.08)] bg-[#070708]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-16">
+      
+      <div class="space-y-3">
+        <h2 class="text-xs font-semibold tracking-widest text-[#2997ff] uppercase" data-i18n="exp.eyebrow">Experience & Studies</h2>
+        <h3 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n="exp.title">
+          Proven at every step.
+        </h3>
+      </div>
+
+      <!-- Experience Cards -->
+      <div class="space-y-8">
+        
+        <!-- Experience 1: ByteDance -->
+        <div class="apple-glass rounded-[28px] p-8 sm:p-10 space-y-6 border border-[rgba(255,255,255,0.08)]">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[rgba(255,255,255,0.08)] pb-4">
+            <div>
+              <h4 class="text-2xl font-semibold text-white tracking-tight" data-i18n="exp.bytedance.company">ByteDance</h4>
+              <p class="text-sm font-medium text-[#2997ff]" data-i18n="exp.bytedance.role">Full-Stack Software Engineer · Beijing, China</p>
+            </div>
+            <span class="text-xs font-mono text-[#86868b]">2022.07 – 2024.06</span>
+          </div>
+
+          <ul class="space-y-3 text-sm text-[#86868b] leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#2997ff] mt-2 flex-shrink-0"></span>
+              <span data-i18n="exp.bytedance.b1"><strong class="text-white">High-Concurrency Microservices:</strong> Architected and scaled production backend services and data pipelines using Node.js, Python, and Go, supporting 100M+ DAU with 99.99% system availability.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#2997ff] mt-2 flex-shrink-0"></span>
+              <span data-i18n="exp.bytedance.b2"><strong class="text-white">Modern Frontend Engineering:</strong> Rebuilt core user interfaces and operational platforms with React, TypeScript, and Next.js, reducing initial page load times by 38%.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#2997ff] mt-2 flex-shrink-0"></span>
+              <span data-i18n="exp.bytedance.b3"><strong class="text-white">Database & Storage Optimization:</strong> Designed and optimized PostgreSQL/MySQL schemas, NoSQL document stores, and multi-tier Redis caching layers, slashing API latency by 45%.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#2997ff] mt-2 flex-shrink-0"></span>
+              <span data-i18n="exp.bytedance.b4"><strong class="text-white">Cloud Delivery & DevOps:</strong> Orchestrated automated CI/CD deployment pipelines on AWS (ECS, S3, RDS, CloudWatch) and Kubernetes using Docker with 85%+ test coverage.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Experience 2: UQ -->
+        <div class="apple-glass rounded-[28px] p-8 sm:p-10 space-y-6 border border-[rgba(255,255,255,0.08)]">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[rgba(255,255,255,0.08)] pb-4">
+            <div>
+              <h4 class="text-2xl font-semibold text-white tracking-tight" data-i18n="edu.uq.school">The University of Queensland</h4>
+              <p class="text-sm font-medium text-indigo-400" data-i18n="edu.uq.degree">Master of Computer Science (Management) · Brisbane, Australia</p>
+            </div>
+            <span class="text-xs font-mono text-[#86868b]">2024.07 – 2026.07</span>
+          </div>
+
+          <div class="space-y-3 text-sm text-[#86868b] leading-relaxed">
+            <p><strong class="text-white" data-i18n="edu.uq.gpa">Academic Standing:</strong> GPA 5.5 / 7.0</p>
+            <p data-i18n="edu.uq.courses"><strong class="text-white">Coursework:</strong> Advanced Database Systems, Cloud Computing, Machine Learning, Data Mining, Software Architecture.</p>
+            <p data-i18n="edu.uq.capstone"><strong class="text-white">Research Capstone:</strong> LLM-based constraint-satisfaction trip planning with state-graph multi-agent architectures (0% constraint violations).</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS: Apple "Product Releases" Style -->
+  <section id="projects" class="py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="space-y-3">
+          <h2 class="text-xs font-semibold tracking-widest text-[#2997ff] uppercase" data-i18n="proj.eyebrow">Projects</h2>
+          <h3 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n="proj.title">
+            Engineered to empower.
+          </h3>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex items-center gap-1.5 p-1 rounded-full bg-[#161617] border border-[rgba(255,255,255,0.08)] text-xs">
+          <button onclick="filterProjects('all')" id="btn-filter-all" class="filter-btn px-4 py-1.5 rounded-full bg-[#2997ff] text-white font-medium transition-all">All</button>
+          <button onclick="filterProjects('ai')" id="btn-filter-ai" class="filter-btn px-4 py-1.5 rounded-full text-[#86868b] hover:text-white transition-all">AI & Agents</button>
+          <button onclick="filterProjects('fullstack')" id="btn-filter-fullstack" class="filter-btn px-4 py-1.5 rounded-full text-[#86868b] hover:text-white transition-all">Full-Stack</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Project 1: Enterprise RAG -->
+        <div class="project-card apple-glass rounded-[28px] p-8 flex flex-col justify-between space-y-6 group hover:border-[#2997ff]/40 transition-all" data-category="ai fullstack">
+          <div class="space-y-4">
+            <span class="text-xs font-mono text-[#2997ff] uppercase tracking-wider">AI Platform</span>
+            <h4 class="text-xl font-semibold text-white tracking-tight group-hover:text-[#2997ff] transition-colors" data-i18n="proj.rag.title">
+              Enterprise RAG Knowledge Base & Support Agent
+            </h4>
+            <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="proj.rag.desc">
+              End-to-end Enterprise RAG platform featuring intelligent document chunking, hybrid semantic search (pgvector & ChromaDB), sub-second retrieval latency, and Celery/Redis async task workers.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-[rgba(255,255,255,0.08)]">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">FastAPI</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">pgvector</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">LangChain</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Docker</span>
+            </div>
+            <button onclick="openProjectModal('rag')" class="text-xs font-medium text-[#2997ff] hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              <span data-i18n="proj.details">Explore Architecture</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Constraint-Aware Trip Planner -->
+        <div class="project-card apple-glass rounded-[28px] p-8 flex flex-col justify-between space-y-6 group hover:border-indigo-400/40 transition-all" data-category="ai">
+          <div class="space-y-4">
+            <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider">Master's Capstone</span>
+            <h4 class="text-xl font-semibold text-white tracking-tight group-hover:text-indigo-400 transition-colors" data-i18n="proj.trip.title">
+              Constraint-Aware Multi-Agent Trip Planner
+            </h4>
+            <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="proj.trip.desc">
+              Multi-agent orchestration pipeline using LangGraph, decomposing complex travel constraints (budget, temporal windows, geospatial proximity) into directed acyclic state graphs with 0% violations.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-[rgba(255,255,255,0.08)]">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">LangGraph</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Z3 Solver</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Python</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Redis</span>
+            </div>
+            <button onclick="openProjectModal('trip')" class="text-xs font-medium text-indigo-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              <span data-i18n="proj.details">Explore Architecture</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: AI Job Application Agent -->
+        <div class="project-card apple-glass rounded-[28px] p-8 flex flex-col justify-between space-y-6 group hover:border-emerald-400/40 transition-all" data-category="fullstack ai">
+          <div class="space-y-4">
+            <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Automation Engine</span>
+            <h4 class="text-xl font-semibold text-white tracking-tight group-hover:text-emerald-400 transition-colors" data-i18n="proj.job.title">
+              Autonomous AI Resume Tailor Engine
+            </h4>
+            <p class="text-xs text-[#86868b] leading-relaxed" data-i18n="proj.job.desc">
+              Intelligent multi-tier agent analyzing job descriptions, calculating ATS match scores, and automatically synthesizing tailored PDF/DOCX resumes and cover letters in English & Chinese.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-[rgba(255,255,255,0.08)]">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Python</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">LLM APIs</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">SQLite</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[#1d1d1f] text-[11px] font-mono text-[#86868b]">Jinja2</span>
+            </div>
+            <button onclick="openProjectModal('job')" class="text-xs font-medium text-emerald-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              <span data-i18n="proj.details">Explore Architecture</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH SPECS: Apple Specification Grid Style -->
+  <section id="specs" class="py-24 border-t border-[rgba(255,255,255,0.08)] bg-[#070708]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-16">
+      
+      <div class="space-y-3">
+        <h2 class="text-xs font-semibold tracking-widest text-[#2997ff] uppercase" data-i18n="specs.eyebrow">Specifications</h2>
+        <h3 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n="specs.title">
+          Tech Specs.
+        </h3>
+      </div>
+
+      <!-- Specs Table Grid -->
+      <div class="divide-y divide-[rgba(255,255,255,0.08)] text-sm">
+        
+        <!-- Spec Row 1: Languages -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r1.title">Languages & Runtimes</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            TypeScript, Python, Go (Golang), JavaScript (ES6+), Node.js, SQL, PHP
+          </div>
+        </div>
+
+        <!-- Spec Row 2: AI & Agent Systems -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r2.title">AI & Agent Engineering</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            LangGraph, LangChain, pgvector, ChromaDB, RAG Pipelines, Prompt Engineering, LLM Tool Calling, Hybrid Retrieval
+          </div>
+        </div>
+
+        <!-- Spec Row 3: Frontend Web -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r3.title">Frontend Craft</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            React.js, Next.js (SSR / SSG), Vue.js, Tailwind CSS, Vite, Zustand, Redux, Responsive UI
+          </div>
+        </div>
+
+        <!-- Spec Row 4: Backend & Microservices -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r4.title">Backend & Microservices</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            FastAPI, Express.js, Spring Boot, RESTful APIs, GraphQL, gRPC, Celery / Asynchronous Workers
+          </div>
+        </div>
+
+        <!-- Spec Row 5: Databases & Caching -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r5.title">Databases & Storage</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            PostgreSQL, Redis, MySQL, MongoDB, DynamoDB, ElasticSearch
+          </div>
+        </div>
+
+        <!-- Spec Row 6: Cloud, DevOps & Infra -->
+        <div class="py-6 grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-4 font-semibold text-white tracking-tight" data-i18n="specs.r6.title">Cloud & Infrastructure</div>
+          <div class="md:col-span-8 text-[#86868b] leading-relaxed">
+            AWS (ECS, S3, RDS, Lambda, CloudWatch), Docker, Kubernetes, CI/CD (GitHub Actions), System Design
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION: Apple Keynote Closer -->
+  <section id="contact" class="py-28 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
+      
+      <div class="space-y-3">
+        <h2 class="text-xs font-semibold tracking-widest text-[#2997ff] uppercase" data-i18n="contact.eyebrow">Get in Touch</h2>
+        <h3 class="text-4xl sm:text-6xl font-semibold tracking-tight text-white" data-i18n="contact.title">
+          Let's build something exceptional.
+        </h3>
+        <p class="text-base sm:text-lg text-[#86868b] max-w-xl mx-auto" data-i18n="contact.desc">
+          Whether you have a full-time role, a distributed systems challenge, or an innovative AI project—my inbox is always open.
+        </p>
+      </div>
+
+      <!-- Contact Action Pill Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a href="mailto:yuhang.deng.ai@gmail.com?subject=Job%20Opportunity%20/%20Engineering%20Inquiry" class="px-8 py-3.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-sm font-normal tracking-tight transition-all shadow-xl flex items-center gap-2">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span data-i18n="contact.cta">Send an Email</span>
+        </a>
+        <button onclick="copyEmail()" class="px-6 py-3.5 rounded-full bg-[#161617] hover:bg-[#1d1d1f] text-[#2997ff] hover:text-[#52aaff] border border-[rgba(255,255,255,0.12)] text-sm font-normal tracking-tight transition-all flex items-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span>yuhang.deng.ai@gmail.com</span>
+        </button>
+      </div>
+
+      <!-- Quick Connect Info -->
+      <div class="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#86868b]">
+        <a href="https://github.com/cs50-citizen" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i data-lucide="github" class="w-4 h-4"></i> GitHub: cs50-citizen
+        </a>
+        <span>·</span>
+        <a href="https://www.linkedin.com/in/yuhang-deng-cs/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i data-lucide="linkedin" class="w-4 h-4 text-[#2997ff]"></i> LinkedIn
+        </a>
+        <span>·</span>
+        <a href="tel:+61478598426" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i> +61 478 598 426 (AU)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- APPLE MINIMALIST FOOTER -->
+  <footer class="py-12 border-t border-[rgba(255,255,255,0.08)] bg-[#000000] text-xs text-[#86868b]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="font-mono font-semibold text-white">&lt;JD/&gt;</span>
+          <span class="ml-2" data-i18n="footer.copyright">Copyright © 2026 Jack Deng. All rights reserved.</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#hero" class="hover:text-white transition-colors" data-i18n="footer.top">Back to Top ↑</a>
+          <a href="Jack_Deng_Resume.pdf" target="_blank" download class="hover:text-white transition-colors" data-i18n="nav.resume">Resume</a>
+          <a href="https://github.com/cs50-citizen" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/yuhang-deng-cs/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+        </div>
+      </div>
+      <p class="text-[11px] text-[#555558] border-t border-[rgba(255,255,255,0.05)] pt-4" data-i18n="footer.notice">
+        Crafted with precision inspired by Apple Inc. design philosophy. Built with semantic HTML5, Tailwind CSS, and vanilla JavaScript.
+      </p>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL: Apple Sheet Style -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
+    <div class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-[32px] apple-glass p-8 space-y-6 border border-[rgba(255,255,255,0.15)] shadow-2xl">
+      <button onclick="closeProjectModal()" class="absolute top-6 right-6 p-2 rounded-full bg-[#1d1d1f] text-[#86868b] hover:text-white transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-2">
+        <span id="modal-tag" class="px-3 py-1 rounded-full text-xs font-mono bg-[#1d1d1f] text-[#2997ff] border border-[rgba(255,255,255,0.08)]">Tag</span>
+        <h3 id="modal-title" class="text-2xl font-semibold text-white tracking-tight">Project Title</h3>
+        <p id="modal-role" class="text-xs font-mono text-[#86868b]">Role</p>
+      </div>
+
+      <div class="space-y-4 text-sm text-[#86868b] leading-relaxed">
+        <p id="modal-desc"></p>
+        <div class="space-y-2">
+          <h4 class="font-semibold text-white text-xs uppercase tracking-wider font-mono">Architecture Highlights:</h4>
+          <ul id="modal-bullets" class="space-y-2 list-disc list-outside pl-4 text-xs text-[#86868b]"></ul>
+        </div>
+      </div>
+
+      <div class="space-y-2 pt-4 border-t border-[rgba(255,255,255,0.08)]">
+        <h4 class="font-semibold text-white text-xs uppercase tracking-wider font-mono">Tech Stack:</h4>
+        <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <div class="pt-4 flex items-center justify-end">
+        <button onclick="closeProjectModal()" class="px-5 py-2 rounded-full bg-[#1d1d1f] hover:bg-[#2d2d2f] text-xs font-medium text-white transition-colors">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT & I18N DATA -->
+  <script>
+    const i18n = {
+      en: {
+        'page.title': 'Jack Deng | Full-Stack & AI Software Engineer',
+        'nav.overview': 'Overview',
+        'nav.experience': 'Experience',
+        'nav.projects': 'Projects',
+        'nav.specs': 'Tech Specs',
+        'nav.contact': 'Contact',
+        'nav.resume': 'Resume',
+        'hero.status': 'Temporary Graduate Visa (Subclass 485) · Full Work Rights',
+        'hero.tagline': 'Engineered for scale. Driven by intelligence.',
+        'hero.zhName': '',
+        'hero.summary': '2 years of large-scale engineering experience at ByteDance (supporting 100M+ DAU) paired with a Master of Computer Science from The University of Queensland. Architecting distributed microservices, ultra-fast web apps, and enterprise AI & RAG systems.',
+        'hero.cta.resume': 'Download CV (PDF)',
+        'hero.cta.copyEmail': 'Copy Email',
+        'hero.cta.projects': 'Explore Projects',
+        'card.name': 'Jack Deng',
+        'card.details': 'Ex-ByteDance Software Engineer · UQ Master of Computer Science · Based in Brisbane (Open to Relocate)',
+        'metric.dau': 'Daily Active Users Scaled',
+        'metric.sla': 'Production Uptime SLA',
+        'metric.perf': 'API Latency Optimization',
+        'metric.ai': 'AI Constraint Violation Rate',
+        'bento.eyebrow': 'Highlights',
+        'bento.title': 'Built for high stakes.',
+        'bento.desc': 'From planet-scale microservices at ByteDance to deterministic multi-agent architectures.',
+        'bento.c1.tag': 'Engineering Core · Beijing',
+        'bento.c1.title': 'ByteDance: Planetary Scale High Concurrency',
+        'bento.c1.desc': 'Engineered backend microservices and data pipelines in Go, Node.js, and Python. Rebuilt user platform with React/Next.js SSR reducing load times by 38%, and eliminated slow database queries via multi-tier Redis caching.',
+        'bento.c2.tag': 'Academic · Brisbane',
+        'bento.c2.title': 'The University of Queensland',
+        'bento.c2.desc': 'Master of Computer Science (Management). Academic GPA 5.5 / 7.0. Advanced Cloud Computing, Distributed Databases, and Machine Learning Systems.',
+        'bento.c3.tag': 'AI Innovation',
+        'bento.c3.title': 'Enterprise RAG & Hybrid Retrieval',
+        'bento.c3.desc': 'End-to-end knowledge pipelines combining vector indexing (pgvector, ChromaDB), sub-second semantic retrieval, and real-time WebSocket/SSE token streaming.',
+        'bento.c4.tag': 'Deterministic AI',
+        'bento.c4.title': 'LangGraph & Multi-Agent Planning',
+        'bento.c4.desc': 'Decoupled complex multi-variable constraints into directed acyclic state graphs, paired with Z3 branch-and-bound pruning to achieve 0% mathematical violations.',
+        'exp.eyebrow': 'Experience & Studies',
+        'exp.title': 'Proven at every step.',
+        'exp.bytedance.company': 'ByteDance',
+        'exp.bytedance.role': 'Full-Stack Software Engineer · Beijing, China',
+        'exp.bytedance.b1': 'High-Concurrency Microservices: Architected and scaled production backend services and data pipelines using Node.js, Python, and Go, supporting 100M+ DAU with 99.99% system availability.',
+        'exp.bytedance.b2': 'Modern Frontend Engineering: Rebuilt core user interfaces and operational platforms with React, TypeScript, and Next.js, reducing initial page load times by 38%.',
+        'exp.bytedance.b3': 'Database & Storage Optimization: Designed and optimized PostgreSQL/MySQL schemas, NoSQL document stores, and multi-tier Redis caching layers, slashing API latency by 45%.',
+        'exp.bytedance.b4': 'Cloud Delivery & DevOps: Orchestrated automated CI/CD deployment pipelines on AWS (ECS, S3, RDS, CloudWatch) and Kubernetes using Docker with 85%+ test coverage.',
+        'edu.uq.school': 'The University of Queensland',
+        'edu.uq.degree': 'Master of Computer Science (Management) · Brisbane, Australia',
+        'edu.uq.gpa': 'Academic Standing: GPA 5.5 / 7.0',
+        'edu.uq.courses': 'Coursework: Advanced Database Systems, Cloud Computing, Machine Learning, Data Mining, Software Architecture.',
+        'edu.uq.capstone': "Research Capstone: LLM-based constraint-satisfaction trip planning with state-graph multi-agent architectures (0% constraint violations).",
+        'proj.eyebrow': 'Projects',
+        'proj.title': 'Engineered to empower.',
+        'proj.rag.title': 'Enterprise RAG Knowledge Base & Support Agent',
+        'proj.rag.desc': 'End-to-end Enterprise RAG platform featuring intelligent document chunking, hybrid semantic search (pgvector & ChromaDB), sub-second retrieval latency, and Celery/Redis async task workers.',
+        'proj.trip.title': 'Constraint-Aware Multi-Agent Trip Planner',
+        'proj.trip.desc': 'Multi-agent orchestration pipeline using LangGraph, decomposing complex travel constraints (budget, temporal windows, geospatial proximity) into directed acyclic state graphs with 0% violations.',
+        'proj.job.title': 'Autonomous AI Resume Tailor Engine',
+        'proj.job.desc': 'Intelligent multi-tier agent analyzing job descriptions, calculating ATS match scores, and automatically synthesizing tailored PDF/DOCX resumes and cover letters in English & Chinese.',
+        'proj.details': 'Explore Architecture',
+        'specs.eyebrow': 'Specifications',
+        'specs.title': 'Tech Specs.',
+        'specs.r1.title': 'Languages & Runtimes',
+        'specs.r2.title': 'AI & Agent Engineering',
+        'specs.r3.title': 'Frontend Craft',
+        'specs.r4.title': 'Backend & Microservices',
+        'specs.r5.title': 'Databases & Storage',
+        'specs.r6.title': 'Cloud & Infrastructure',
+        'contact.eyebrow': 'Get in Touch',
+        'contact.title': "Let's build something exceptional.",
+        'contact.desc': 'Whether you have a full-time role, a distributed systems challenge, or an innovative AI project—my inbox is always open.',
+        'contact.cta': 'Send an Email',
+        'footer.copyright': 'Copyright © 2026 Jack Deng. All rights reserved.',
+        'footer.top': 'Back to Top ↑',
+        'footer.notice': 'Crafted with precision inspired by Apple Inc. design philosophy. Built with semantic HTML5, Tailwind CSS, and vanilla JavaScript.'
+      },
+      zh: {
+        'page.title': '邓宇航 (Jack Deng) | 全栈与 AI 软件工程师',
+        'nav.overview': '总览',
+        'nav.experience': '履历',
+        'nav.projects': '项目实战',
+        'nav.specs': '技术规格',
+        'nav.contact': '联系方式',
+        'nav.resume': '个人简历',
+        'hero.status': '持有澳洲 485 毕业生全职工作签证 · 支持全职现场与远程',
+        'hero.tagline': '赋能海量并发。引领智能落地。',
+        'hero.zhName': '邓宇航',
+        'hero.summary': '具备 2 年字节跳动（ByteDance）亿级日活核心研发经验，拥有澳大利亚昆士兰大学（UQ）计算机硕士学位。专注于高并发分布式微服务、现代 Web 全栈以及企业级 AI Agent 与 RAG 系统的工程落地。',
+        'hero.cta.resume': '下载简历 (PDF)',
+        'hero.cta.copyEmail': '一键复制邮箱',
+        'hero.cta.projects': '浏览项目实战',
+        'card.name': '邓宇航 (Jack Deng)',
+        'card.details': '前字节跳动研发工程师 · 昆士兰大学计算机硕士 · 现居布里斯班（随时支持搬迁到岗）',
+        'metric.dau': '线上支撑亿级日活 (DAU)',
+        'metric.sla': '核心生产服务可用性',
+        'metric.perf': '慢查询治理与接口延迟优化',
+        'metric.ai': 'AI 强约束冲突与幻觉率',
+        'bento.eyebrow': '核心亮点',
+        'bento.title': '为严苛工业级场景而生。',
+        'bento.desc': '从字节跳动亿级高并发微服务，到确定性零冲突多智能体架构。',
+        'bento.c1.tag': '核心工程履历 · 北京',
+        'bento.c1.title': '字节跳动：亿级日活高并发分布式架构',
+        'bento.c1.desc': '主导 Go、Node.js 与 Python 后端微服务与数据链路研发。使用 React/Next.js SSR 重构前端中台，首屏耗时降低 38%；设计多级 Redis 分布式缓存治理慢查询，高频接口延迟降低 45%。',
+        'bento.c2.tag': '学术背景 · 布里斯班',
+        'bento.c2.title': '澳大利亚昆士兰大学 (UQ)',
+        'bento.c2.desc': '计算机科学（管理）硕士学位。GPA 5.5 / 7.0。系统研修云原生计算、分布式高级数据库系统、机器学习与软件架构。',
+        'bento.c3.tag': 'AI 创新工程',
+        'bento.c3.title': '企业级 RAG 混合语义检索中台',
+        'bento.c3.desc': '端到端研发知识库文档分块与 pgvector / ChromaDB 向量索引管线，实现亚秒级混合语义检索与高并发流式打字机响应。',
+        'bento.c4.tag': '确定性智能体',
+        'bento.c4.title': 'LangGraph 状态图多 Agent 协同',
+        'bento.c4.desc': '将强约束条件解耦为有向无环状态图，结合确定性分支定界算法（Z3/OR-Tools）剪枝，将行程冲突与幻觉率降至 0%。',
+        'exp.eyebrow': '职业与学术经历',
+        'exp.title': '严谨闭环，步步扎实。',
+        'exp.bytedance.company': '字节跳动 (ByteDance)',
+        'exp.bytedance.role': '全栈研发工程师 · 中国·北京',
+        'exp.bytedance.b1': '高并发微服务架构：主导研发基于 Node.js、Python 与 Go 的后端微服务与数据链路，支撑 100M+ DAU 亿级日活，保障 99.99% 生产可用性。',
+        'exp.bytedance.b2': '现代前端工程化：使用 React、TypeScript 和 Next.js 重构核心业务端与前端中台，优化首屏渲染与资源打包，页面加载耗时缩短 38%。',
+        'exp.bytedance.b3': '数据存储与性能调优：设计并优化大规模 PostgreSQL/MySQL 关系型数据库与 Redis 分布式缓存，慢查询治理使高频接口延迟下降 45%。',
+        'exp.bytedance.b4': '云原生交付与质量保障：搭建基于 AWS（ECS/S3/RDS/CloudWatch）与 Kubernetes 的自动化 CI/CD 交付体系，实现每日持续集成与 85%+ 测试覆盖率。',
+        'edu.uq.school': '昆士兰大学 (The University of Queensland)',
+        'edu.uq.degree': '计算机科学（管理）硕士 · 澳大利亚·布里斯班',
+        'edu.uq.gpa': '学术表现：GPA 5.5 / 7.0',
+        'edu.uq.courses': '核心课程：高级数据库系统、云原生计算、机器学习、数据挖掘、社交媒体分析、软件体系结构。',
+        'edu.uq.capstone': '硕士毕业设计：基于 LangGraph 与确定性约束求解（Z3/OR-Tools）的大模型智能行程规划架构，将行程冲突率从 34% 降至 0%。',
+        'proj.eyebrow': '精选项目',
+        'proj.title': '用代码释放技术生产力。',
+        'proj.rag.title': '企业级 RAG 知识库与智能对话 Agent 平台',
+        'proj.rag.desc': '端到端企业级 RAG 知识库系统，研发复杂文档智能分块策略，基于 pgvector 与 ChromaDB 构建多模态向量索引与混合语义检索，检索延迟低于 800ms。',
+        'proj.trip.title': '基于大模型与约束感知的智能行程规划系统 (硕士毕业课题)',
+        'proj.trip.desc': '基于 LangGraph 设计并实现多 Agent 协同工作流，将强约束（预算上限、时间窗口、地理拓扑）解耦为有向无环状态图，实现行程规划模块化治理。',
+        'proj.job.title': '全自动化 AI 智能求职与简历精准裁量引擎 (Job Agent)',
+        'proj.job.desc': '自主研发的 AI 赋能求职中台，自动化深度解析岗位 JD 需求、智能提取技术关键词、计算 ATS 匹配得分，并自动合成中英文多格式精准简历与求职信。',
+        'proj.details': '查看架构细节',
+        'specs.eyebrow': '技术参数',
+        'specs.title': '技术规格一览。',
+        'specs.r1.title': '编程语言与运行时',
+        'specs.r2.title': 'AI 与智能体工程 (Agent)',
+        'specs.r3.title': '现代前端工程',
+        'specs.r4.title': '后端微服务架构',
+        'specs.r5.title': '数据存储与缓存',
+        'specs.r6.title': '云原生与工程交付',
+        'contact.eyebrow': '联系沟通',
+        'contact.title': '期待与您探讨技术挑战与合作机会。',
+        'contact.desc': '无论是全职软件工程师/AI岗位、高并发技术交流，还是创新项目协作，随时欢迎与我取得联系！',
+        'contact.cta': '直接发送邮件给 Jack',
+        'footer.copyright': 'Copyright © 2026 邓宇航 (Jack Deng). 保留所有权利。',
+        'footer.top': '回到顶部 ↑',
+        'footer.notice': '遵循 Apple 极简科技美学标准设计。基于语义化 HTML5、Tailwind CSS 与原生 JavaScript 构建。'
+      }
+    };
+
+    const projectDetails = {
+      rag: {
+        tag: 'AI & Enterprise RAG',
+        title: 'Enterprise RAG Knowledge Base & Intelligent Support Agent',
+        role: 'Lead System Architect & Full-Stack Developer',
+        desc: 'Architected an end-to-end Enterprise RAG platform featuring intelligent document chunking, hybrid semantic search, and vector indexing using pgvector & ChromaDB with sub-second retrieval latency.',
+        bullets: [
+          'Engineered asynchronous ingestion queues using Celery and Redis to parse and embed multi-format documents (PDF, DOCX, Markdown, HTML).',
+          'Paired FastAPI WebSockets and Server-Sent Events (SSE) for low-latency real-time token streaming with client-side markdown rendering.',
+          'Implemented Role-Based Access Control (RBAC), API rate-limiting, and resilient token-budget caching layers.',
+          'Containerized the entire multi-service architecture using Docker Compose with automated integration tests.'
+        ],
+        tech: ['Python', 'FastAPI', 'LangChain', 'PostgreSQL (pgvector)', 'ChromaDB', 'Celery', 'Redis', 'React', 'TypeScript', 'Docker']
+      },
+      trip: {
+        tag: "Master's Research Capstone (UQ)",
+        title: 'LLM-Based Constraint-Aware Intelligent Trip Planning',
+        role: 'Lead System Engineer & Researcher',
+        desc: 'Engineered a multi-agent orchestration pipeline using LangGraph, decomposing complex travel constraints (budget limits, temporal windows, geospatial proximity) into directed acyclic state graphs.',
+        bullets: [
+          'Integrated deterministic constraint satisfaction algorithms (branch-and-bound) with LLM generative proposals, eliminating hallucinated conflicts and reducing constraint violation rates from 34% to 0%.',
+          'Optimized graph state serialization and Redis caching to execute end-to-end multi-day trip planning in sub-200ms with 100% mathematical compliance.',
+          'Conducted comprehensive benchmark evaluations comparing standard LLM prompting vs. hybrid constraint solver pipelines.'
+        ],
+        tech: ['Python', 'LangGraph', 'Constraint Satisfaction (Z3/OR-Tools)', 'Large Language Models', 'FastAPI', 'Redis']
+      },
+      job: {
+        tag: 'Full-Stack AI Productivity Engine',
+        title: 'Autonomous AI Job Application & Resume Tailor Engine',
+        role: 'Lead Architect & Creator',
+        desc: 'A full-stack automation platform designed to ingest raw job descriptions, extract core technical competency vectors, and tailor production-ready bilingual resumes and cover letters in real time.',
+        bullets: [
+          'Engineered a deterministic ATS compatibility scorer evaluating keyword frequency, technical qualification alignment, and semantic relevance.',
+          'Built custom Jinja2 HTML/CSS templates paired with automated headless PDF and DOCX converters for pixel-perfect document rendering.',
+          'Created an integrated SQLite database application tracker maintaining complete version history, audit logs, and status dashboards.'
+        ],
+        tech: ['Python', 'Claude / Gemini LLM APIs', 'SQLite', 'Jinja2', 'Tailwind CSS', 'Docker', 'Automation Scripts']
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      document.getElementById('lang-label').innerText = currentLang === 'en' ? '中文' : 'English';
+      applyLanguage(currentLang);
+    }
+
+    function applyLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key] !== undefined) {
+          el.innerText = i18n[lang][key];
+        }
+      });
+
+      const zhNameEl = document.getElementById('hero-zh-name');
+      if (zhNameEl) {
+        if (lang === 'zh') {
+          zhNameEl.classList.remove('hidden');
+          zhNameEl.classList.add('block');
+        } else {
+          zhNameEl.classList.add('hidden');
+          zhNameEl.classList.remove('block');
+        }
+      }
+
+      if (i18n[lang] && i18n[lang]['page.title']) {
+        document.title = i18n[lang]['page.title'];
+      }
+    }
+
+    function copyEmail() {
+      const email = "yuhang.deng.ai@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("Copied to clipboard: " + email);
+      }).catch(() => {
+        showToast("Email: " + email);
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      toastText.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function filterProjects(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-[#2997ff]', 'text-white');
+        btn.classList.add('text-[#86868b]');
+      });
+      const activeBtn = document.getElementById('btn-filter-' + category);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-[#2997ff]', 'text-white');
+        activeBtn.classList.remove('text-[#86868b]');
+      }
+
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cardCats = card.getAttribute('data-category') || '';
+        if (category === 'all' || cardCats.includes(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function openProjectModal(key) {
+      const data = projectDetails[key];
+      if (!data) return;
+      document.getElementById('modal-tag').innerText = data.tag;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-role').innerText = data.role;
+      document.getElementById('modal-desc').innerText = data.desc;
+
+      const bulletsContainer = document.getElementById('modal-bullets');
+      bulletsContainer.innerHTML = '';
+      data.bullets.forEach(b => {
+        const li = document.createElement('li');
+        li.innerText = b;
+        bulletsContainer.appendChild(li);
+      });
+
+      const techContainer = document.getElementById('modal-tech');
+      techContainer.innerHTML = '';
+      data.tech.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'px-3 py-1 rounded-full text-xs font-mono bg-[#1d1d1f] text-[#f5f5f7] border border-[rgba(255,255,255,0.08)]';
+        span.innerText = t;
+        techContainer.appendChild(span);
+      });
+
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
